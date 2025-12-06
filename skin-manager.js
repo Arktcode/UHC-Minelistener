@@ -178,13 +178,7 @@ function applySkin() {
     }
 
     try {
-        // Guardado Global (si está disponible)
-        if (typeof window.saveCustomSkinGlobal === 'function') {
-            window.saveCustomSkinGlobal(currentSkinPlayerIndex, pendingSkinData);
-        } else {
-            // Fallback local
-            localStorage.setItem(`player_custom_skin_${currentSkinPlayerIndex}`, pendingSkinData);
-        }
+        localStorage.setItem(`player_custom_skin_${currentSkinPlayerIndex}`, pendingSkinData);
 
         showSkinSuccess('✅ Skin guardada correctamente');
 
@@ -202,13 +196,7 @@ function resetSkin() {
     if (currentSkinPlayerIndex < 0) return;
 
     try {
-        // Borrado Global
-        if (typeof window.saveCustomSkinGlobal === 'function') {
-            window.saveCustomSkinGlobal(currentSkinPlayerIndex, null);
-        } else {
-            // Fallback local
-            localStorage.removeItem(`player_custom_skin_${currentSkinPlayerIndex}`);
-        }
+        localStorage.removeItem(`player_custom_skin_${currentSkinPlayerIndex}`);
 
         showSkinSuccess('✅ Skin restaurada al original');
 
@@ -247,13 +235,7 @@ function updatePlayerViewer3DModel(playerIndex) {
 }
 
 function getCustomSkin(playerIndex) {
-    // Lectura Global (Prioridad)
-    if (typeof window.getGlobalSkin === 'function') { // Corregido nombre de función
-        const globalSkin = window.getGlobalSkin(playerIndex);
-        if (globalSkin !== undefined && globalSkin !== null) return globalSkin;
-    }
 
-    // Fallback local
     try {
         return localStorage.getItem(`player_custom_skin_${playerIndex}`);
     } catch (error) {
