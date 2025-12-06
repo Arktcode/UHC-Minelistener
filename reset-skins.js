@@ -1,6 +1,6 @@
 // Script para borrar todas las skins personalizadas del localStorage
 (function clearCustomSkins() {
-    console.log('🧹 Iniciando limpieza de skins personalizadas...');
+    console.log('Iniciando limpieza de skins personalizadas...');
     let count = 0;
     const items = Object.keys(localStorage);
 
@@ -11,6 +11,6 @@
         }
     });
 
-    console.log(`✅ Se han eliminado ${count} skins personalizadas.`);
-    console.log('🔄 Por favor, recarga la página para ver los cambios.');
+    console.log(`Se han eliminado ${count} skins personalizadas.`);
+    console.log('Por favor, recarga la página para ver los cambios.');
 })();

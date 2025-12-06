@@ -559,7 +559,7 @@ body::before {
     position: relative;
     width: 800px;
     height: 500px;
-    background: linear-gradient(135deg, #2a2a2a 0%, #3d3d3d 100%);
+    background: linear-gradient(135deg, #000000 0%, #403a63 100%);
     border-radius: 12px;
     box-shadow: 0 20px 60px rgba(0, 0, 0, 0.9);
     display: flex;
@@ -568,13 +568,13 @@ body::before {
 
 .player-viewer-left {
     flex: 1;
-    background: #1a1a1a;
+    background: linear-gradient(135deg, #000000 0%, #292929 100%);
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     padding: 30px;
-    border-right: 2px solid #4a4a4a;
+    border-right: 2px solid #ffffff;
 }
 
 .player-skin-container {
@@ -596,7 +596,7 @@ body::before {
 .player-name-display {
     font-family: 'Press Start 2P', monospace;
     font-size: 16px;
-    color: #FFD700;
+    color: #7971bbe0;
     text-align: center;
     margin-top: 20px;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
@@ -615,13 +615,13 @@ body::before {
     background: rgba(0, 0, 0, 0.3);
     padding: 15px;
     border-radius: 8px;
-    border-left: 4px solid #FFD700;
+    border-left: 4px solid #ffffff;
 }
 
 .player-info-title {
     font-family: 'Press Start 2P', monospace;
     font-size: 10px;
-    color: #FFD700;
+    color: #a6a3d3;
     margin-bottom: 10px;
     text-transform: uppercase;
 }
@@ -646,8 +646,8 @@ body::before {
 }
 
 .player-stat-value {
-    color: #FFD700;
-    font-weight: bold;
+    color: #858585;
+    font-weight: normal;
 }
 
 .player-description {
@@ -665,7 +665,7 @@ body::before {
     width: 32px;
     height: 32px;
     background: #000000;
-    border: 2px solid #3d2817;
+    border: 2px solid #2e2e2e;
     border-radius: 6px;
     color: white;
     font-family: 'Press Start 2P', monospace;
@@ -693,12 +693,12 @@ body::before {
 }
 
 .player-viewer-right::-webkit-scrollbar-thumb {
-    background: #FFD700;
+    background: #ffffff;
     border-radius: 4px;
 }
 
 .player-viewer-right::-webkit-scrollbar-thumb:hover {
-    background: #FFA500;
+    background: #5c5c5c;
 }
 
 
@@ -1087,39 +1087,39 @@ body::before {
     font-family: 'Press Start 2P', monospace;
     font-size: 9px;
     padding: 10px 20px;
-    border: 2px solid #3d2817;
+    border: 2px solid #ffffff;
     border-radius: 4px;
     cursor: pointer;
     transition: all 0.2s;
 }
 
 .password-btn.confirm {
-    background: #4a7c59;
+    background: #1b1b1b;
     color: white;
 }
 
 .password-btn.confirm:hover {
-    background: #5a9c69;
+    background: #0b037c49;
     transform: scale(1.05);
 }
 
 .password-btn.cancel {
-    background: #8b4513;
+    background: #202020;
     color: white;
 }
 
 .password-btn.cancel:hover {
-    background: #a0522d;
+    background: #414a63;
     transform: scale(1.05);
 }
 
 .password-btn.remove {
-    background: #8b0000;
+    background: #1d1d1d;
     color: white;
 }
 
 .password-btn.remove:hover {
-    background: #a00000;
+    background: #7a1a274b;
     transform: scale(1.05);
 }
 
@@ -1288,7 +1288,7 @@ body::before {
     transition: left 0.6s ease-out;
     overflow-y: auto;
     scrollbar-width: thin;
-    scrollbar-color: rgba(250, 229, 44, 0.829) #2a2a2a;
+    scrollbar-color: rgba(255, 255, 255, 0.829) #2a2a2a;
 }
 
 .sidebar.open {
@@ -1304,7 +1304,7 @@ body::before {
 }
 
 .sidebar::-webkit-scrollbar-thumb {
-    background-color: #FFD700;
+    background-color: #ffffff;
     border-radius: 4px;
     border: 2px solid #2a2a2a;
 }
@@ -1346,8 +1346,8 @@ body::before {
 .payer-box:hover {
     transform: translateY(-5px) scale(1.02);
     background: rgba(0, 0, 0, 0.6);
-    border-color: #FFD700;
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5), 0 0 15px rgba(255, 215, 0, 0.3);
+    border-color: #b92c2c;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5), 0 0 15px rgba(165, 3, 3, 0.3);
     z-index: 10;
 }
 
@@ -1905,8 +1905,8 @@ body::before {
     margin-top: 20px;
     width: 100%;
     padding: 12px 20px;
-    background: linear-gradient(135deg, #3a8fb7 0%, #2c6a8a 100%);
-    border: 2px solid #2c6a8a;
+    background: linear-gradient(135deg, #000000 0%, #303030 100%);
+    border: 2px linear-gradient(135deg, #000000 0%, #636363 100%);
     border-radius: 6px;
     color: white;
     font-family: 'Press Start 2P', monospace;
@@ -1921,9 +1921,8 @@ body::before {
 }
 
 .change-skin-btn:hover {
-    background: linear-gradient(135deg, #4aa3d1 0%, #3a8fb7 100%);
+    background: linear-gradient(135deg, #222222 0%, #131313 100%);
     transform: translateY(-2px);
-    box-shadow: 0 6px 12px rgba(58, 143, 183, 0.4);
 }
 
 .change-skin-btn:active {
@@ -1941,7 +1940,7 @@ body::before {
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.85);
+    background: rgb(0, 0, 0);
     z-index: 10003;
     display: none;
     align-items: center;
@@ -1956,21 +1955,46 @@ body::before {
     position: relative;
     width: 500px;
     max-height: 80vh;
-    background: linear-gradient(135deg, #2a2a2a 0%, #1a1a1a 100%);
+    background: linear-gradient(135deg, #2b2b2b 0%, #000000 100%);
     border-radius: 12px;
-    border: 3px solid #3a8fb7;
+    border: 3px solid #000000;
     box-shadow: 0 20px 60px rgba(0, 0, 0, 0.9);
     padding: 30px;
     overflow-y: auto;
+
+    /* Scrollbar llamativa */
+    scrollbar-width: thin;
+    scrollbar-color: #ffffff #0a0a0a;
+}
+
+.skin-upload-panel::-webkit-scrollbar {
+    width: 12px;
+}
+
+.skin-upload-panel::-webkit-scrollbar-track {
+    background: #000000;
+    border-radius: 6px;
+    border: 1px solid #333;
+}
+
+.skin-upload-panel::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, #ffffff 0%, #a0a0a0 100%);
+    border-radius: 6px;
+    border: 2px solid #000000;
+    box-shadow: inset 0 0 4px rgba(0, 0, 0, 0.5);
+}
+
+.skin-upload-panel::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(180deg, #ffffff 0%, #cccccc 100%);
 }
 
 .skin-upload-panel h3 {
     font-family: 'Press Start 2P', monospace;
     font-size: 16px;
-    color: #FFD700;
+    color: #ffffff;
     text-align: center;
-    margin-bottom: 25px;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+    margin-bottom: 10px;
+    text-shadow: 2px 2px 1px rgba(0, 0, 0, 0.8);
 }
 
 .skin-upload-panel h4 {
@@ -1985,7 +2009,7 @@ body::before {
     padding: 20px;
     border-radius: 8px;
     margin-bottom: 20px;
-    border-left: 4px solid #3a8fb7;
+    border-left: 4px solid #ffffff;
 }
 
 .skin-upload-hint {
@@ -1999,7 +2023,7 @@ body::before {
 .skin-upload-divider {
     font-family: 'Press Start 2P', monospace;
     font-size: 12px;
-    color: #666;
+    color: #ffffff;
     text-align: center;
     margin: 20px 0;
     position: relative;
@@ -2029,7 +2053,7 @@ body::before {
     font-family: 'Press Start 2P', monospace;
     font-size: 8px;
     background: rgba(0, 0, 0, 0.5);
-    border: 2px solid #3a3a3a;
+    border: 2px solid #ffffff;
     border-radius: 4px;
     color: #E0E0E0;
     margin-bottom: 10px;
@@ -2037,13 +2061,13 @@ body::before {
 
 #skin-uuid-input:focus {
     outline: none;
-    border-color: #3a8fb7;
+    border-color: #ffffff;
 }
 
 .skin-file-name {
     font-family: 'Press Start 2P', monospace;
     font-size: 7px;
-    color: #3a8fb7;
+    color: #ffffff;
     margin-top: 10px;
     word-break: break-all;
 }
@@ -2060,7 +2084,7 @@ body::before {
 .skin-upload-success {
     font-family: 'Press Start 2P', monospace;
     font-size: 8px;
-    color: #44ff44;
+    color: #71da71;
     text-align: center;
     margin: 10px 0;
     min-height: 20px;
@@ -2081,7 +2105,7 @@ body::before {
     width: 32px;
     height: 32px;
     background: #8b0000;
-    border: 2px solid #3d2817;
+    border: 2px solid #ffffff;
     border-radius: 6px;
     color: white;
     font-family: 'Press Start 2P', monospace;
@@ -2111,7 +2135,7 @@ body::before {
 .skin-preview-img {
     max-width: 200px;
     image-rendering: pixelated;
-    border: 2px solid #3a8fb7;
+    border: 2px solid #ffffff;
     border-radius: 4px;
     background: rgba(0, 0, 0, 0.3);
 }

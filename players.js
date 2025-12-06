@@ -54,7 +54,7 @@ const playersData = [
         id: 4,
         name: 'Arksource',
         skinFile: '',
-        role: 'SD Usuario',
+        role: 'Administrador',
         kills: 0,
         deaths: 0 / 3,
         wins: 0,
