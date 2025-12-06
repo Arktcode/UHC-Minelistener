@@ -1,0 +1,2117 @@
+﻿/* ========================================
+   ESTILOS CONSOLIDADOS - UHC MINDUSTRY 2025
+   Fusión completa de todos los CSS
+   ======================================== */
+
+/* ========================================
+   ESTILOS BASE Y GLOBALES
+   ======================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    /* Fondo principal: Cielo */
+    background-image: url('assets/images/sky.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    image-rendering: pixelated;
+    image-rendering: -moz-crisp-edges;
+    image-rendering: crisp-edges;
+    -ms-interpolation-mode: nearest-neighbor;
+    min-height: 100vh;
+    width: 100%;
+    position: relative;
+    overflow-x: hidden;
+}
+
+/* Capa 1 (fondo): Blackstone - colinas escalonadas estilo Minecraft */
+body::before {
+    content: '';
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 50%;
+    background-image: url('assets/images/blackstone.png');
+    background-size: 24px 24px;
+    background-repeat: repeat;
+    image-rendering: pixelated;
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0.25;
+    filter: brightness(0.4);
+    clip-path: polygon(0% 100%, 0% 85%, 5% 85%, 5% 75%, 10% 75%, 10% 80%, 15% 80%, 15% 70%,
+            20% 70%, 20% 78%, 25% 78%, 25% 65%, 30% 65%, 30% 72%, 35% 72%, 35% 60%,
+            40% 60%, 40% 68%, 45% 68%, 45% 55%, 50% 55%, 50% 63%, 55% 63%, 55% 58%,
+            60% 58%, 60% 65%, 65% 65%, 65% 52%, 70% 52%, 70% 60%, 75% 60%, 75% 48%,
+            80% 48%, 80% 58%, 85% 58%, 85% 50%, 90% 50%, 90% 62%, 95% 62%, 95% 55%,
+            100% 55%, 100% 100%);
+}
+
+/* Capa 2 (intermedia): Pilares de Basalt - de abajo hasta arriba */
+.terrain-basalt-pillars {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('assets/images/basalt.png');
+    background-size: 48px 48px;
+    background-repeat: repeat;
+    image-rendering: pixelated;
+    pointer-events: none;
+    z-index: 1;
+    opacity: 0.8;
+    clip-path: polygon(0% 100%, 0% 0%, 12% 0%, 12% 100%, 48% 100%, 48% 0%, 58% 0%, 58% 100%, 100% 100%);
+}
+
+
+.terrain-top-netherrack {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 25%;
+    background-image: url('assets/images/netherrack.png');
+    background-size: 64px 64px;
+    background-repeat: repeat;
+    image-rendering: pixelated;
+    pointer-events: none;
+    z-index: 4;
+
+    clip-path: polygon(0% 0%, 100% 0%,
+            100% 60%, 95% 60%, 95% 80%, 90% 80%, 90% 50%,
+            85% 50%, 85% 70%, 80% 70%, 80% 40%,
+            75% 40%, 75% 90%, 70% 90%, 70% 60%,
+            65% 60%, 65% 30%, 60% 30%, 60% 70%,
+            55% 70%, 55% 40%, 50% 40%, 50% 80%,
+            45% 80%, 45% 50%, 40% 50%, 40% 20%,
+            35% 20%, 35% 60%, 30% 60%, 30% 90%,
+            25% 90%, 25% 50%, 20% 50%, 20% 80%,
+            15% 80%, 15% 40%, 10% 40%, 10% 70%,
+            5% 70%, 5% 30%, 0% 30%);
+}
+
+.terrain-bottom-nylium {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 35%;
+    background-image: url('assets/images/Warped_Nylium.png');
+    background-size: 64px 64px;
+    background-repeat: repeat;
+    image-rendering: pixelated;
+    pointer-events: none;
+    z-index: 2;
+
+    clip-path: polygon(0% 100%, 0% 60%, 5% 60%, 5% 50%, 10% 50%, 10% 65%,
+            15% 65%, 15% 45%, 20% 45%, 20% 55%, 25% 55%, 25% 40%,
+            30% 40%, 30% 50%, 35% 50%, 35% 35%, 40% 35%, 40% 45%,
+            45% 45%, 45% 30%, 50% 30%, 50% 40%, 55% 40%, 55% 25%,
+            60% 25%, 60% 35%, 65% 35%, 65% 45%, 70% 45%, 70% 30%,
+            75% 30%, 75% 50%, 80% 50%, 80% 40%, 85% 40%, 85% 55%,
+            90% 55%, 90% 45%, 95% 45%, 95% 60%, 100% 60%, 100% 100%);
+}
+
+
+.terrain-bottom-netherrack {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 32%;
+
+    background-image: url('assets/images/netherrack.png');
+    background-size: 64px 64px;
+    background-repeat: repeat;
+    image-rendering: pixelated;
+    pointer-events: none;
+    z-index: 3;
+
+    clip-path: polygon(0% 100%, 0% 60%, 5% 60%, 5% 50%, 10% 50%, 10% 65%,
+            15% 65%, 15% 45%, 20% 45%, 20% 55%, 25% 55%, 25% 40%,
+            30% 40%, 30% 50%, 35% 50%, 35% 35%, 40% 35%, 40% 45%,
+            45% 45%, 45% 30%, 50% 30%, 50% 40%, 55% 40%, 55% 25%,
+            60% 25%, 60% 35%, 65% 35%, 65% 45%, 70% 45%, 70% 30%,
+            75% 30%, 75% 50%, 80% 50%, 80% 40%, 85% 40%, 85% 55%,
+            90% 55%, 90% 45%, 95% 45%, 95% 60%, 100% 60%, 100% 100%);
+}
+
+
+.terrain-top-netherrack {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 25%;
+    background-image: url('assets/images/netherrack.png');
+    background-size: 64px 64px;
+    background-repeat: repeat;
+    image-rendering: pixelated;
+    pointer-events: none;
+    z-index: 4;
+    clip-path: polygon(0% 0%, 100% 0%,
+            100% 60%, 95% 60%, 95% 80%, 90% 80%, 90% 50%,
+            85% 50%, 85% 70%, 80% 70%, 80% 40%,
+            75% 40%, 75% 90%, 70% 90%, 70% 60%,
+            65% 60%, 65% 30%, 60% 30%, 60% 70%,
+            55% 70%, 55% 40%, 50% 40%, 50% 80%,
+            45% 80%, 45% 50%, 40% 50%, 40% 20%,
+            35% 20%, 35% 60%, 30% 60%, 30% 90%,
+            25% 90%, 25% 50%, 20% 50%, 20% 80%,
+            15% 80%, 15% 40%, 10% 40%, 10% 70%,
+            5% 70%, 5% 30%, 0% 30%);
+}
+
+.terrain-bottom-line {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 64px;
+    background-image: url('assets/images/Warped_Nylium.png');
+    background-size: 64px 64px;
+    background-repeat: repeat-x;
+    image-rendering: pixelated;
+    pointer-events: none;
+    z-index: 2;
+}
+
+.content {
+    padding: 40px;
+    padding-left: 100px;
+    max-width: 1600px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+}
+
+.content h1 {
+    color: #F9F9F9;
+    font-family: 'Press Start 2P', 'Courier New', monospace;
+    font-size: 32px;
+    text-shadow: 4px 4px 0px rgba(0, 0, 0, 0.9);
+    margin-bottom: 30px;
+    line-height: 1.5;
+}
+
+.content p {
+    color: #F9F9F9;
+    font-family: 'Press Start 2P', 'Courier New', monospace;
+    font-size: 14px;
+    text-shadow: 2px 2px 0px rgba(0, 0, 0, 0.9);
+    line-height: 1.8;
+}
+
+/* ========================================
+   SIDEBAR Y ELEMENTOS INTERACTIVOS
+   ======================================== */
+
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: -300px;
+    width: 300px;
+    height: 100%;
+    background: transparent;
+    image-rendering: pixelated;
+    box-shadow: 5px 0 25px rgba(0, 0, 0, 0.8);
+    z-index: 1000;
+    border-right: 4px solid rgba(255, 255, 255, 0);
+    transition: left 0.6s ease-out;
+    overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(250, 229, 44, 0.829) #2a2a2a;
+}
+
+.sidebar.open {
+    left: 0;
+}
+
+.sidebar::-webkit-scrollbar {
+    width: 8px;
+}
+
+.sidebar::-webkit-scrollbar-track {
+    background: #2a2a2a;
+}
+
+.sidebar::-webkit-scrollbar-thumb {
+    background-color: #FFD700;
+    border-radius: 4px;
+    border: 2px solid #2a2a2a;
+}
+
+.sidebar-content {
+    padding: 30px 20px;
+    position: relative;
+    z-index: 10;
+}
+
+.sidebar-content::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.3);
+    z-index: -1;
+}
+
+.sidebar-content h2 {
+    color: #FFD700;
+    font-family: 'Press Start 2P', 'Courier New', monospace;
+    font-size: 16px;
+    text-shadow: 3px 3px 0px rgba(0, 0, 0, 0.9);
+    margin-bottom: 20px;
+    line-height: 1.5;
+}
+
+.sidebar-content p {
+    color: #F9F9F9;
+    font-family: 'Press Start 2P', 'Courier New', monospace;
+    font-size: 10px;
+    text-shadow: 2px 2px 0px rgba(0, 0, 0, 0.9);
+    margin-bottom: 15px;
+    line-height: 1.6;
+}
+
+.gilded-block {
+    position: absolute;
+    width: 64px;
+    height: 64px;
+    background-image: url('assets/images/gilded-blackstone.png');
+    background-size: cover;
+    image-rendering: pixelated;
+    z-index: 1;
+    pointer-events: none;
+}
+
+.toggle-btn {
+    position: fixed;
+    top: 15%;
+    left: 0;
+    transform: translateY(-50%);
+    width: 64px;
+    height: 64px;
+    background-image: url('assets/images/glow-item-frame.png');
+    background-size: cover;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    z-index: 1001;
+    transition: all 0.6s ease-out;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.5));
+}
+
+.toggle-btn:hover {
+    transform: translateY(-50%) scale(1.1);
+    filter: drop-shadow(0 6px 12px rgba(0, 0, 0, 0.7)) brightness(1.1);
+}
+
+.toggle-btn:active {
+    transform: translateY(-50%) scale(0.95);
+}
+
+.toggle-btn.sidebar-open {
+    left: 300px;
+}
+
+.toggle-btn img {
+    width: 70%;
+    height: 70%;
+    image-rendering: pixelated;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.5));
+}
+
+.book-toggle-btn {
+    position: fixed;
+    top: calc(15% + 80px);
+    left: 0;
+    transform: translateY(-50%);
+    width: 64px;
+    height: 64px;
+    background-image: url('assets/images/glow-item-frame.png');
+    background-size: cover;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    z-index: 1001;
+    transition: all 0.6s ease-out;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.5));
+}
+
+.book-toggle-btn:hover {
+    transform: translateY(-50%) scale(1.1);
+    filter: drop-shadow(0 6px 12px rgba(0, 0, 0, 0.7)) brightness(1.1);
+}
+
+.book-toggle-btn:active {
+    transform: translateY(-50%) scale(0.95);
+}
+
+.book-toggle-btn.sidebar-open {
+    left: 300px;
+}
+
+.book-toggle-btn img {
+    width: 70%;
+    height: 70%;
+    image-rendering: pixelated;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.5));
+}
+
+/* ========================================
+   GRID DE JUGADORES (SIDEBAR)
+   ======================================== */
+
+.payers-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+    margin-top: 20px;
+    padding-bottom: 20px;
+}
+
+.payer-box {
+    aspect-ratio: 1 / 1;
+    background-color: rgba(0, 0, 0, 0.5);
+    border: 4px solid #3a3a3a;
+    border-radius: 4px;
+    cursor: default;
+    transition: all 0.2s ease;
+    position: relative;
+    overflow: hidden;
+    image-rendering: pixelated;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.8);
+}
+
+.payer-box:hover {
+    border-color: #FFD700;
+    transform: scale(1.05);
+    box-shadow: 0 0 15px rgba(255, 215, 0, 0.3);
+}
+
+.payer-box::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    pointer-events: none;
+}
+
+/* ========================================
+   SELECTOR DE JUGADORES
+   ======================================== */
+
+.player-selector-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.85);
+    z-index: 10001;
+    display: none;
+    align-items: center;
+    justify-content: center;
+}
+
+.player-selector-overlay.active {
+    display: flex;
+}
+
+.player-selector-panel {
+    position: relative;
+    width: 500px;
+    max-height: 600px;
+    background: url('assets/images/minecraft-netherite-block.png') center/cover;
+    image-rendering: pixelated;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.9);
+    padding: 40px 30px;
+    border-radius: 8px;
+}
+
+.player-selector-title {
+    font-family: 'Press Start 2P', monospace;
+    font-size: 14px;
+    color: #ffffff;
+    text-align: center;
+    margin-bottom: 30px;
+    text-shadow: 1px 1px 0 rgba(31, 31, 34, 0.726);
+}
+
+.player-heads-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    max-height: 400px;
+    overflow-y: auto;
+    padding: 10px;
+    scrollbar-width: thin;
+    scrollbar-color: #ffffff00 transparent;
+}
+
+.player-head-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    padding: 15px;
+    background: rgba(255, 255, 255, 0);
+    border: 2px solid #00000000;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.player-head-box:hover {
+    background: rgb(0, 0, 0);
+    border-color: #ffffff;
+    transform: scale(1.05);
+
+}
+
+.player-head-preview {
+    width: 64px;
+    height: 64px;
+    position: relative;
+    border-radius: 4px;
+    box-shadow: 0 4px 8px rgb(29, 29, 29);
+}
+
+.player-head-box span {
+    font-family: 'Press Start 2P', monospace;
+    font-size: 8px;
+    color: #ffffff;
+    text-align: center;
+    word-break: break-word;
+}
+
+.close-player-selector {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    width: 28px;
+    height: 28px;
+    background: #8b0000;
+    border: 2px solid #3d2817;
+    border-radius: 4px;
+    color: white;
+    font-family: 'Press Start 2P', monospace;
+    font-size: 14px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+}
+
+.close-player-selector:hover {
+    background: #ff0000;
+    transform: scale(1.1);
+}
+
+/* ========================================
+   VISOR DE JUGADORES
+   ======================================== */
+
+.player-viewer-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.85);
+    z-index: 10002;
+    display: none;
+    align-items: center;
+    justify-content: center;
+}
+
+.player-viewer-overlay.active {
+    display: flex;
+}
+
+.player-viewer-panel {
+    position: relative;
+    width: 800px;
+    height: 500px;
+    background: linear-gradient(135deg, #2a2a2a 0%, #3d3d3d 100%);
+    border-radius: 12px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.9);
+    display: flex;
+    overflow: hidden;
+}
+
+.player-viewer-left {
+    flex: 1;
+    background: #1a1a1a;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 30px;
+    border-right: 2px solid #4a4a4a;
+}
+
+.player-skin-container {
+    width: 300px;
+    height: 350px;
+    background: #0a0a0a;
+    border-radius: 8px;
+    border: 2px solid #3a3a3a;
+    position: relative;
+    overflow: hidden;
+}
+
+#player-skin-canvas {
+    width: 300px !important;
+    height: 350px !important;
+    display: block;
+}
+
+.player-name-display {
+    font-family: 'Press Start 2P', monospace;
+    font-size: 16px;
+    color: #FFD700;
+    text-align: center;
+    margin-top: 20px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+}
+
+.player-viewer-right {
+    flex: 1;
+    padding: 40px 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    overflow-y: auto;
+}
+
+.player-info-section {
+    background: rgba(0, 0, 0, 0.3);
+    padding: 15px;
+    border-radius: 8px;
+    border-left: 4px solid #FFD700;
+}
+
+.player-info-title {
+    font-family: 'Press Start 2P', monospace;
+    font-size: 10px;
+    color: #FFD700;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+}
+
+.player-info-content {
+    font-family: 'Press Start 2P', monospace;
+    font-size: 8px;
+    color: #E0E0E0;
+    line-height: 1.8;
+}
+
+.player-stat-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 8px;
+    padding: 5px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.player-stat-label {
+    color: #A0A0A0;
+}
+
+.player-stat-value {
+    color: #FFD700;
+    font-weight: bold;
+}
+
+.player-description {
+    font-family: 'Press Start 2P', monospace;
+    font-size: 7px;
+    color: #B0B0B0;
+    line-height: 1.6;
+    font-style: italic;
+}
+
+.close-player-viewer {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    width: 32px;
+    height: 32px;
+    background: #000000;
+    border: 2px solid #3d2817;
+    border-radius: 6px;
+    color: white;
+    font-family: 'Press Start 2P', monospace;
+    font-size: 16px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+    z-index: 10;
+}
+
+.close-player-viewer:hover {
+    background: #ff0000;
+    transform: scale(1.1);
+}
+
+.player-viewer-right::-webkit-scrollbar {
+    width: 8px;
+}
+
+.player-viewer-right::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 4px;
+}
+
+.player-viewer-right::-webkit-scrollbar-thumb {
+    background: #FFD700;
+    border-radius: 4px;
+}
+
+.player-viewer-right::-webkit-scrollbar-thumb:hover {
+    background: #FFA500;
+}
+
+
+/*LIBRO - ESTILOS*/
+
+.book-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.85);
+    z-index: 9999;
+    display: none;
+    align-items: center;
+    justify-content: center;
+}
+
+.book-overlay.active {
+    display: flex;
+}
+
+.book-panel {
+    position: relative;
+    width: 600px;
+    height: 440px;
+    background: url('assets/images/book-background.png') center/115% no-repeat;
+    image-rendering: pixelated;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.9);
+    padding: 65px 95px 55px 95px;
+    display: none;
+    opacity: 0;
+    transform: scale(0.9);
+    transition: all 0.3s cubic-bezier(0.18, 0.89, 0.32, 1.28);
+    margin-right: 40px;
+}
+
+.book-panel.active {
+    display: block;
+    opacity: 1;
+    transform: scale(1);
+}
+
+.book-player-name {
+    position: absolute;
+    top: 25px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-family: 'Press Start 2P', monospace;
+    font-size: 12px;
+    color: #3d2817;
+    text-shadow: 1px 1px 0 rgba(255, 255, 255, 0.4);
+    width: 100%;
+    text-align: center;
+    pointer-events: none;
+}
+
+.book-pages {
+    display: flex;
+    gap: 30px;
+    height: 100%;
+    align-items: flex-start;
+    justify-content: center;
+}
+
+.book-left-page {
+    flex: 1;
+    height: 92%;
+    background: transparent;
+    border: none;
+    resize: none;
+    outline: none;
+    font-family: 'Press Start 2P', monospace;
+    font-size: 9px;
+    line-height: 1.8;
+    color: #2d1f15;
+    padding: 5px;
+    margin-top: 5px;
+    margin-left: -55px;
+}
+
+.book-left-page::placeholder {
+    color: rgba(45, 31, 21, 0.3);
+}
+
+.book-right-page {
+    flex: 1;
+    height: 92%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+}
+
+.book-items-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 60px);
+    grid-template-rows: repeat(3, 60px);
+    gap: 15px;
+    padding: 0;
+    margin: 0;
+    margin-right: -125px;
+    justify-content: center;
+    align-content: center;
+}
+
+.item-box {
+    width: 60px;
+    height: 60px;
+    background-color: rgba(139, 115, 85, 0.1);
+    border: 2px solid #8b7355;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: transform 0.2s, background-color 0.2s;
+    background-size: 70%;
+    background-position: center;
+    background-repeat: no-repeat;
+    image-rendering: pixelated;
+    box-shadow: inset 0 0 3px rgba(0, 0, 0, 0.1);
+    transform: none;
+}
+
+.item-box:hover {
+    background-color: rgba(139, 115, 85, 0.25);
+    transform: scale(1.1);
+    border-color: #5c4a38;
+}
+
+.book-close-btn {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    width: 28px;
+    height: 28px;
+    background: #8b4513;
+    border: 2px solid #3d2817;
+    border-radius: 4px;
+    color: #fff;
+    font-family: 'Press Start 2P', monospace;
+    font-size: 14px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+    z-index: 100;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+.book-close-btn:hover {
+    background: #a0522d;
+    transform: scale(1.1);
+}
+
+.book-close-btn:active {
+    transform: scale(0.95);
+    box-shadow: none;
+}
+
+.book-back-btn {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    width: 28px;
+    height: 28px;
+    background: #8b4513;
+    border: 2px solid #3d2817;
+    border-radius: 4px;
+    color: #fff;
+    font-family: 'Press Start 2P', monospace;
+    font-size: 14px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+    z-index: 100;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+.book-back-btn:hover {
+    background: #a0522d;
+    transform: scale(1.1);
+}
+
+.book-back-btn:active {
+    transform: scale(0.95);
+    box-shadow: none;
+}
+
+/*SISTEMA DE ITEMS - MAPA*/
+
+.map-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    z-index: 10000;
+    display: none;
+    align-items: center;
+    justify-content: flex-end;
+    padding-right: 50px;
+    pointer-events: none;
+}
+
+.map-overlay.active {
+    display: flex;
+}
+
+.map-panel {
+    position: relative;
+    width: 350px;
+    height: 480px;
+    background: url('') center/contain no-repeat;
+    image-rendering: pixelated;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.8);
+    padding: 30px 15px 15px 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: none;
+    pointer-events: all;
+}
+
+.map-title {
+    font-family: 'Press Start 2P', sans-serif;
+    font-size: 15px;
+    font-weight: 100;
+    color: #ffffff;
+    margin-bottom: -30px;
+    text-align: center;
+}
+
+.map-items-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 60px);
+    gap: 8px;
+    width: auto;
+    max-height: 370px;
+    overflow-y: auto;
+    padding: 3px;
+    scrollbar-width: thin;
+    scrollbar-color: #ffffff00 transparent;
+    justify-content: center;
+    margin-top: 50px;
+}
+
+.map-item-box {
+    width: 60px;
+    height: 60px;
+    background-color: rgba(255, 255, 255, 0.2);
+    border: 2px solid #fffcfa;
+    border-radius: 4px;
+    cursor: pointer;
+    background-size: 70%;
+    background-position: center;
+    background-repeat: no-repeat;
+    image-rendering: pixelated;
+    transition: transform 0.2s;
+}
+
+.map-item-box:hover {
+    transform: scale(1.1);
+    background-color: rgba(255, 255, 255, 0.4);
+    border-color: #48ff00;
+}
+
+.remove-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-image: url('assets/icons/trash.png');
+    font-family: 'Press Start 2P', monospace;
+    font-size: 20px;
+    color: #d14646;
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+.remove-item:hover {
+    color: #ff0000;
+    background-color: rgba(255, 0, 0, 0.2);
+}
+
+.close-map {
+    position: absolute;
+    top: 25px;
+    right: 10px;
+    width: 24px;
+    height: 24px;
+    background: #ff0000;
+    border: 2px solid #3d2817;
+    color: white;
+    font-family: 'Press Start 2P', monospace;
+    font-size: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+.close-map:hover {
+    background: #ff0000;
+}
+
+/*PASSWORD SYSTEM STYLES*/
+.password-prompt-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.9);
+    z-index: 10003;
+    display: none;
+    align-items: center;
+    justify-content: center;
+}
+
+.password-prompt-overlay.active {
+    display: flex;
+}
+
+.password-prompt-panel {
+    background: url('assets/images/map-background.png') center/cover;
+    image-rendering: pixelated;
+    padding: 40px 30px;
+    border-radius: 8px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.9);
+    width: 400px;
+    text-align: center;
+}
+
+.password-prompt-panel h3 {
+    font-family: 'Press Start 2P', monospace;
+    font-size: 14px;
+    color: #3d2817;
+    margin-bottom: 20px;
+    text-shadow: 1px 1px 0 rgba(255, 255, 255, 0.4);
+}
+
+.password-prompt-panel p {
+    font-family: 'Press Start 2P', monospace;
+    font-size: 10px;
+    color: #3d2817;
+    margin-bottom: 15px;
+}
+
+.password-prompt-panel input {
+    width: 100%;
+    padding: 12px;
+    font-family: 'Press Start 2P', monospace;
+    font-size: 10px;
+    background: rgba(255, 255, 255, 0.9);
+    border: 2px solid #8b7355;
+    border-radius: 4px;
+    margin-bottom: 10px;
+    color: #3d2817;
+}
+
+.password-prompt-panel input:focus {
+    outline: none;
+    border-color: #5c4a38;
+    background: rgba(255, 255, 255, 1);
+}
+
+.password-error {
+    font-family: 'Press Start 2P', monospace;
+    font-size: 8px;
+    color: #8b0000;
+    min-height: 20px;
+    margin-bottom: 10px;
+}
+
+.password-prompt-buttons {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.password-btn {
+    font-family: 'Press Start 2P', monospace;
+    font-size: 9px;
+    padding: 10px 20px;
+    border: 2px solid #3d2817;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.password-btn.confirm {
+    background: #4a7c59;
+    color: white;
+}
+
+.password-btn.confirm:hover {
+    background: #5a9c69;
+    transform: scale(1.05);
+}
+
+.password-btn.cancel {
+    background: #8b4513;
+    color: white;
+}
+
+.password-btn.cancel:hover {
+    background: #a0522d;
+    transform: scale(1.05);
+}
+
+.password-btn.remove {
+    background: #8b0000;
+    color: white;
+}
+
+.password-btn.remove:hover {
+    background: #a00000;
+    transform: scale(1.05);
+}
+
+.password-settings-panel {
+    position: fixed;
+    top: 50%;
+    right: -450px;
+    transform: translateY(-50%);
+    width: 400px;
+    background: url('assets/images/map-background.png') center/cover;
+    image-rendering: pixelated;
+    padding: 30px;
+    border-radius: 8px 0 0 8px;
+    box-shadow: -5px 0 30px rgba(0, 0, 0, 0.8);
+    z-index: 10004;
+    transition: right 0.3s ease-out;
+}
+
+.password-settings-panel.active {
+    right: 0;
+}
+
+.password-settings-panel h3 {
+    font-family: 'Press Start 2P', monospace;
+    font-size: 12px;
+    color: #3d2817;
+    margin-bottom: 20px;
+    text-align: center;
+    text-shadow: 1px 1px 0 rgba(255, 255, 255, 0.4);
+}
+
+.password-settings-panel label {
+    display: block;
+    font-family: 'Press Start 2P', monospace;
+    font-size: 8px;
+    color: #3d2817;
+    margin-bottom: 8px;
+    margin-top: 15px;
+}
+
+.password-settings-panel input {
+    width: 100%;
+    padding: 10px;
+    font-family: 'Press Start 2P', monospace;
+    font-size: 9px;
+    background: rgba(255, 255, 255, 0.9);
+    border: 2px solid #8b7355;
+    border-radius: 4px;
+    margin-bottom: 5px;
+    color: #3d2817;
+}
+
+.password-settings-panel input:focus {
+    outline: none;
+    border-color: #5c4a38;
+    background: rgba(255, 255, 255, 1);
+}
+
+.password-settings-error,
+.password-settings-success {
+    font-family: 'Press Start 2P', monospace;
+    font-size: 7px;
+    min-height: 18px;
+    margin-top: 10px;
+    text-align: center;
+}
+
+.password-settings-error {
+    color: #8b0000;
+}
+
+.password-settings-success {
+    color: #2d5016;
+}
+
+.password-settings-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.password-settings-buttons button {
+    width: 100%;
+}
+
+.book-password-btn {
+    position: absolute;
+    top: 15px;
+    right: 50px;
+    width: 28px;
+    height: 28px;
+    background: #4a7c59;
+    border: 2px solid #3d2817;
+    border-radius: 4px;
+    font-size: 14px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+    z-index: 100;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+.book-password-btn:hover {
+    background: #5a9c69;
+    transform: scale(1.1);
+}
+
+.book-password-btn:active {
+    transform: scale(0.95);
+    box-shadow: none;
+}
+
+.player-head-box.locked::after {
+    content: '🔒';
+    position: relative;
+    top: -105px;
+    right: -50px;
+    font-size: 12px;
+    filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.5));
+}
+
+/*Extras :p*/
+
+@media (max-width: 800px) {
+    .book-panel {
+        width: 95%;
+        height: auto;
+        min-height: 500px;
+        padding: 60px 40px;
+        background-size: cover;
+    }
+
+    .book-pages {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .book-items-grid {
+        grid-template-columns: repeat(3, 60px);
+        grid-template-rows: repeat(2, 60px);
+    }
+}
+
+.terrain-block {
+    image-rendering: pixelated;
+    image-rendering: -moz-crisp-edges;
+    image-rendering: crisp-edges;
+}
+
+/*SIDEBAR Y ELEMENTOS INTERACTIVOS*/
+
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: -300px;
+    width: 300px;
+    height: 100%;
+    background: transparent;
+    image-rendering: pixelated;
+    box-shadow: 5px 0 25px rgba(0, 0, 0, 0.8);
+    z-index: 1000;
+    border-right: 4px solid rgba(255, 255, 255, 0);
+    transition: left 0.6s ease-out;
+    overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(250, 229, 44, 0.829) #2a2a2a;
+}
+
+.sidebar.open {
+    left: 0;
+}
+
+.sidebar::-webkit-scrollbar {
+    width: 8px;
+}
+
+.sidebar::-webkit-scrollbar-track {
+    background: #2a2a2a;
+}
+
+.sidebar::-webkit-scrollbar-thumb {
+    background-color: #FFD700;
+    border-radius: 4px;
+    border: 2px solid #2a2a2a;
+}
+
+.sidebar-content {
+    padding: 30px 20px;
+    position: relative;
+    z-index: 10;
+}
+
+/*PLAYER GRID (OVERRIDE)*/
+
+.payers-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+    margin-top: 20px;
+    padding-bottom: 20px;
+}
+
+.payer-box {
+    aspect-ratio: 1 / 1;
+    background: rgba(0, 0, 0, 0.4);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    cursor: default;
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    position: relative;
+    overflow: hidden;
+    image-rendering: pixelated;
+    backdrop-filter: blur(4px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+    padding-bottom: 0;
+}
+
+.payer-box:hover {
+    transform: translateY(-5px) scale(1.02);
+    background: rgba(0, 0, 0, 0.6);
+    border-color: #FFD700;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5), 0 0 15px rgba(255, 215, 0, 0.3);
+    z-index: 10;
+}
+
+.payer-skin-view {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-size: 800%;
+    background-position: 14.286% 14.286%;
+    z-index: 1;
+    transition: transform 0.3s ease;
+}
+
+.payer-hat-view {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-size: 800%;
+    background-position: 71.429% 14.286%;
+    z-index: 2;
+    pointer-events: none;
+    transition: transform 0.3s ease;
+}
+
+.payer-box:hover .payer-skin-view,
+.payer-box:hover .payer-hat-view {
+    transform: scale(1.1);
+}
+
+.payer-info-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    z-index: 5;
+    width: 100%;
+    text-align: center;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.95) 0%, rgba(0, 0, 0, 0.6) 50%, rgba(0, 0, 0, 0) 100%);
+    padding-top: 30px;
+    padding-bottom: 8px;
+}
+
+.payer-name {
+    font-family: 'Press Start 2P', monospace;
+    font-size: 8px;
+    color: #fff;
+    text-shadow: 1px 1px 0 #000;
+    margin-bottom: 4px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    padding: 0 5px;
+}
+
+.payer-status-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background-color: #555;
+    /* Default inactivo */
+    display: inline-block;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+}
+
+.payer-status-dot.active {
+    background-color: #55ff55;
+    box-shadow: 0 0 8px #55ff55;
+}
+
+.payer-box.empty {
+    border: 1px dashed rgba(255, 255, 255, 0.1);
+    background: rgba(0, 0, 0, 0.2);
+}
+
+@keyframes pulse-green {
+    0% {
+        box-shadow: 0 0 0 0 rgba(85, 255, 85, 0.7);
+    }
+
+    70% {
+        box-shadow: 0 0 0 6px rgba(85, 255, 85, 0);
+    }
+
+    100% {
+        box-shadow: 0 0 0 0 rgba(85, 255, 85, 0);
+    }
+}
+
+.payer-status-dot.active {
+    animation: pulse-green 2s infinite;
+}
+
+.payer-box.empty {
+    border: 2px dashed rgba(255, 255, 255, 0.05);
+    background: rgba(0, 0, 0, 0.15);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.payer-box.empty::before {
+    content: '?';
+    font-family: 'Press Start 2P', monospace;
+    font-size: 24px;
+    color: rgba(255, 255, 255, 0.1);
+}
+
+.payer-box.empty:hover {
+    border-color: rgba(255, 255, 255, 0.2);
+    background: rgba(0, 0, 0, 0.25);
+}
+
+.sidebar {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+.sidebar::-webkit-scrollbar {
+    display: none;
+    width: 0;
+    height: 0;
+}
+
+.sidebar::-webkit-scrollbar-track {
+    display: none;
+    background: transparent;
+}
+
+.sidebar::-webkit-scrollbar-thumb {
+    display: none;
+    background: transparent;
+}
+
+/*MINECRAFT TITLE STYLE (OVERRIDE)*/
+.sidebar-content h2 {
+    color: #D7D7D7;
+    font-family: 'Press Start 2P', 'Courier New', monospace;
+    font-size: 20px;
+    text-align: center;
+    margin-bottom: 25px;
+    line-height: 1.5;
+    letter-spacing: 2px;
+    text-shadow:
+        6px 6px 0 rgba(0, 0, 0, 0.8);
+    transform: skewY(-2deg);
+    margin-top: 10px;
+}
+
+/*RULES SECTION*/
+
+.content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 50px 20px;
+    box-sizing: border-box;
+}
+
+.rules-container {
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(10px);
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    border-radius: 15px;
+    padding: 40px;
+    max-width: 800px;
+    width: 100%;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+    position: relative;
+    z-index: 5;
+}
+
+.rules-container h1 {
+    font-family: 'Press Start 2P', monospace;
+    color: #FFD700;
+    text-align: center;
+    margin-bottom: 40px;
+    text-shadow: 3px 3px 0 #000;
+    font-size: 24px;
+    letter-spacing: 2px;
+}
+
+.timeline {
+    position: relative;
+    padding-left: 30px;
+}
+
+.timeline::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 10px;
+    bottom: 10px;
+    width: 4px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 2px;
+}
+
+.timeline-item {
+    position: relative;
+    margin-bottom: 30px;
+    padding-left: 20px;
+}
+
+.timeline-item:last-child {
+    margin-bottom: 0;
+}
+
+.timeline-dot {
+    position: absolute;
+    left: -36px;
+    top: 5px;
+    width: 16px;
+    height: 16px;
+    background: #FFD700;
+    border: 3px solid #2a2a2a;
+    border-radius: 50%;
+    box-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+    z-index: 1;
+    transition: all 0.3s ease;
+}
+
+.timeline-item:hover .timeline-dot {
+    background: #55ff55;
+    transform: scale(1.2);
+    box-shadow: 0 0 15px rgba(85, 255, 85, 0.8);
+}
+
+.timeline-item::before {
+    content: '';
+    position: absolute;
+    left: -30px;
+    top: 13px;
+    width: 30px;
+    height: 2px;
+    background: rgba(255, 255, 255, 0.1);
+    z-index: 0;
+}
+
+.timeline-content h3 {
+    font-family: 'Press Start 2P', monospace;
+    color: #fff;
+    font-size: 14px;
+    margin-bottom: 10px;
+    text-shadow: 2px 2px 0 #000;
+}
+
+.timeline-content p {
+    font-family: 'Press Start 2P', monospace;
+    color: #ccc;
+    font-size: 10px;
+    line-height: 1.6;
+    background: rgba(0, 0, 0, 0.3);
+    padding: 15px;
+    border-radius: 8px;
+    border-left: 3px solid rgba(255, 215, 0, 0.5);
+    transition: all 0.3s ease;
+}
+
+.timeline-item:hover .timeline-content p {
+    background: rgba(0, 0, 0, 0.5);
+    border-left-color: #55ff55;
+    transform: translateX(5px);
+}
+
+.rules-image-wrapper {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+}
+
+.rules-image {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    opacity: 0.95;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+    transition: transform 0.3s ease;
+}
+
+.rules-image:hover {
+    transform: scale(1.02);
+}
+
+/*COUNTDOWN TIMER ASI BIEN GRANDOTE COMO LOS DE THEGREFT*/
+
+.countdown-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    background: rgba(0, 0, 0, 0.4);
+    padding: 40px 60px;
+    border-radius: 20px;
+    backdrop-filter: blur(5px);
+    border: 2px solid rgb(255, 255, 255);
+    box-shadow: 0 0 50px rgba(0, 0, 0, 0.5);
+}
+
+.countdown-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.countdown-number {
+    font-family: 'Press Start 2P', monospace;
+    font-size: 64px;
+    color: #ffffff;
+    text-shadow:
+        4px 4px 0 #3F3F3F;
+    line-height: 1;
+    margin-bottom: 10px;
+}
+
+.countdown-label {
+    font-family: 'Press Start 2P', monospace;
+    font-size: 12px;
+    color: #fff;
+    text-shadow: 2px 2px 0 #000;
+    letter-spacing: 2px;
+}
+
+.separator {
+    font-family: 'Press Start 2P', monospace;
+    font-size: 48px;
+    color: #fff;
+    text-shadow: 3px 3px 0 #000;
+    margin-top: -20px;
+    animation: blink 1s infinite;
+}
+
+@keyframes blink {
+
+    0%,
+    100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0.5;
+    }
+}
+
+@media (max-width: 800px) {
+    .countdown-number {
+        font-size: 32px;
+    }
+
+}
+
+.rules-container h1 {
+    font-family: 'Press Start 2P', monospace;
+    color: #FFD700;
+    text-align: center;
+    margin-bottom: 40px;
+    text-shadow: 3px 3px 0 #000;
+    font-size: 24px;
+    letter-spacing: 2px;
+}
+
+.timeline {
+    position: relative;
+    padding-left: 30px;
+}
+
+.timeline::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 10px;
+    bottom: 10px;
+    width: 4px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 2px;
+}
+
+.timeline-item {
+    position: relative;
+    margin-bottom: 30px;
+    padding-left: 20px;
+}
+
+.timeline-item:last-child {
+    margin-bottom: 0;
+}
+
+.timeline-dot {
+    position: absolute;
+    left: -36px;
+    top: 5px;
+    width: 16px;
+    height: 16px;
+    background: #FFD700;
+    border: 3px solid #2a2a2a;
+    border-radius: 50%;
+    box-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+    z-index: 1;
+    transition: all 0.3s ease;
+}
+
+.timeline-item:hover .timeline-dot {
+    background: #55ff55;
+    transform: scale(1.2);
+    box-shadow: 0 0 15px rgba(85, 255, 85, 0.8);
+}
+
+.timeline-item::before {
+    content: '';
+    position: absolute;
+    left: -30px;
+    top: 13px;
+    width: 30px;
+    height: 2px;
+    background: rgba(255, 255, 255, 0.1);
+    z-index: 0;
+}
+
+.timeline-content h3 {
+    font-family: 'Press Start 2P', monospace;
+    color: #fff;
+    font-size: 14px;
+    margin-bottom: 10px;
+    text-shadow: 2px 2px 0 #000;
+}
+
+.timeline-content p {
+    font-family: 'Press Start 2P', monospace;
+    color: #ccc;
+    font-size: 10px;
+    line-height: 1.6;
+    background: rgba(0, 0, 0, 0.3);
+    padding: 15px;
+    border-radius: 8px;
+    border-left: 3px solid rgba(255, 215, 0, 0.5);
+    transition: all 0.3s ease;
+}
+
+.timeline-item:hover .timeline-content p {
+    background: rgba(0, 0, 0, 0.5);
+    border-left-color: #55ff55;
+    transform: translateX(5px);
+}
+
+/*RULES IMAGE STYLES*/
+
+.rules-image-wrapper {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+}
+
+.rules-image {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    opacity: 0.95;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+    transition: transform 0.3s ease;
+}
+
+.rules-image:hover {
+    transform: scale(1.02);
+}
+
+.countdown-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    background: rgba(0, 0, 0, 0.4);
+    padding: 40px 60px;
+    border-radius: 20px;
+    backdrop-filter: blur(5px);
+    border: 2px solid rgb(255, 255, 255);
+    box-shadow: 0 0 50px rgba(0, 0, 0, 0.5);
+}
+
+.countdown-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.countdown-number {
+    font-family: 'Press Start 2P', monospace;
+    font-size: 64px;
+    color: #ffffff;
+    text-shadow:
+        4px 4px 0 #3F3F3F;
+    line-height: 1;
+    margin-bottom: 10px;
+}
+
+.countdown-label {
+    font-family: 'Press Start 2P', monospace;
+    font-size: 12px;
+    color: #fff;
+    text-shadow: 2px 2px 0 #000;
+    letter-spacing: 2px;
+}
+
+.separator {
+    font-family: 'Press Start 2P', monospace;
+    font-size: 48px;
+    color: #fff;
+    text-shadow: 3px 3px 0 #000;
+    margin-top: -20px;
+    animation: blink 1s infinite;
+}
+
+@keyframes blink {
+
+    0%,
+    100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0.5;
+    }
+}
+
+@media (max-width: 800px) {
+    .countdown-number {
+        font-size: 32px;
+    }
+
+    .separator {
+        font-size: 24px;
+    }
+
+    .countdown-container {
+        padding: 20px;
+        gap: 10px;
+    }
+}
+
+.player-selector-panel::after,
+.close-player-selector::after {
+    content: none !important;
+    display: none !important;
+}
+
+/* ========================================
+   BOTÓN DE CAMBIO DE SKIN EN PLAYER VIEWER
+   ======================================== */
+
+.change-skin-btn {
+    margin-top: 20px;
+    width: 100%;
+    padding: 12px 20px;
+    background: linear-gradient(135deg, #3a8fb7 0%, #2c6a8a 100%);
+    border: 2px solid #2c6a8a;
+    border-radius: 6px;
+    color: white;
+    font-family: 'Press Start 2P', monospace;
+    font-size: 10px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    transition: all 0.3s;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.change-skin-btn:hover {
+    background: linear-gradient(135deg, #4aa3d1 0%, #3a8fb7 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(58, 143, 183, 0.4);
+}
+
+.change-skin-btn:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+/* ========================================
+   SKIN UPLOAD OVERLAY
+   ======================================== */
+
+.skin-upload-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.85);
+    z-index: 10003;
+    display: none;
+    align-items: center;
+    justify-content: center;
+}
+
+.skin-upload-overlay.active {
+    display: flex;
+}
+
+.skin-upload-panel {
+    position: relative;
+    width: 500px;
+    max-height: 80vh;
+    background: linear-gradient(135deg, #2a2a2a 0%, #1a1a1a 100%);
+    border-radius: 12px;
+    border: 3px solid #3a8fb7;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.9);
+    padding: 30px;
+    overflow-y: auto;
+}
+
+.skin-upload-panel h3 {
+    font-family: 'Press Start 2P', monospace;
+    font-size: 16px;
+    color: #FFD700;
+    text-align: center;
+    margin-bottom: 25px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+}
+
+.skin-upload-panel h4 {
+    font-family: 'Press Start 2P', monospace;
+    font-size: 10px;
+    color: #3a8fb7;
+    margin-bottom: 10px;
+}
+
+.skin-upload-section {
+    background: rgba(0, 0, 0, 0.3);
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    border-left: 4px solid #3a8fb7;
+}
+
+.skin-upload-hint {
+    font-family: 'Press Start 2P', monospace;
+    font-size: 7px;
+    color: #A0A0A0;
+    line-height: 1.6;
+    margin-bottom: 15px;
+}
+
+.skin-upload-divider {
+    font-family: 'Press Start 2P', monospace;
+    font-size: 12px;
+    color: #666;
+    text-align: center;
+    margin: 20px 0;
+    position: relative;
+}
+
+.skin-upload-divider::before,
+.skin-upload-divider::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    width: 40%;
+    height: 2px;
+    background: #333;
+}
+
+.skin-upload-divider::before {
+    left: 0;
+}
+
+.skin-upload-divider::after {
+    right: 0;
+}
+
+#skin-uuid-input {
+    width: 100%;
+    padding: 10px;
+    font-family: 'Press Start 2P', monospace;
+    font-size: 8px;
+    background: rgba(0, 0, 0, 0.5);
+    border: 2px solid #3a3a3a;
+    border-radius: 4px;
+    color: #E0E0E0;
+    margin-bottom: 10px;
+}
+
+#skin-uuid-input:focus {
+    outline: none;
+    border-color: #3a8fb7;
+}
+
+.skin-file-name {
+    font-family: 'Press Start 2P', monospace;
+    font-size: 7px;
+    color: #3a8fb7;
+    margin-top: 10px;
+    word-break: break-all;
+}
+
+.skin-upload-error {
+    font-family: 'Press Start 2P', monospace;
+    font-size: 8px;
+    color: #ff4444;
+    text-align: center;
+    margin: 10px 0;
+    min-height: 20px;
+}
+
+.skin-upload-success {
+    font-family: 'Press Start 2P', monospace;
+    font-size: 8px;
+    color: #44ff44;
+    text-align: center;
+    margin: 10px 0;
+    min-height: 20px;
+}
+
+.skin-upload-buttons {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 20px;
+}
+
+.close-skin-upload {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    width: 32px;
+    height: 32px;
+    background: #8b0000;
+    border: 2px solid #3d2817;
+    border-radius: 6px;
+    color: white;
+    font-family: 'Press Start 2P', monospace;
+    font-size: 16px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+    z-index: 10;
+}
+
+.close-skin-upload:hover {
+    background: #ff0000;
+    transform: scale(1.1);
+}
+
+.skin-preview-container {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.skin-preview-container h4 {
+    margin-bottom: 15px;
+}
+
+.skin-preview-img {
+    max-width: 200px;
+    image-rendering: pixelated;
+    border: 2px solid #3a8fb7;
+    border-radius: 4px;
+    background: rgba(0, 0, 0, 0.3);
+}
