@@ -2,7 +2,7 @@
 // GESTOR DE BASE DE DATOS GLOBAL (FIREBASE)
 // ==========================================
 
-// ⚠️ IMPORTANTE: REEMPLAZA ESTO CON TUS PROPIAS CREDENCIALES DE FIREBASE
+// IMPORTANTE: REEMPLAZA ESTO CON TUS PROPIAS CREDENCIALES DE FIREBASE
 // 1. Ve a https://console.firebase.google.com/
 // 2. Crea un proyecto (o usa uno existente).
 // 3. Añade una Web App y copia el objeto "firebaseConfig".
@@ -156,3 +156,4 @@ window.bookAuthGlobal = {
 
 // Auto-iniciar al cargar el script
 document.addEventListener('DOMContentLoaded', initFirebaseSystem);
+
