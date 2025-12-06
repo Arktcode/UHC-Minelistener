@@ -2,7 +2,7 @@
 
 Website con temática de Minecraft para el evento UHC Mindustry 2025.
 
-## Características
+## 🚀 Características
 
 - Contador regresivo para el evento
 - Sistema de perfiles de jugadores con renderizado 3D de skins
@@ -10,7 +10,7 @@ Website con temática de Minecraft para el evento UHC Mindustry 2025.
 - Diseño temático de Minecraft con bloques del Nether
 - Totalmente responsive
 
-## Requisitos
+## 📋 Requisitos
 
 Este es un sitio web estático que funciona con:
 - HTML5
@@ -18,7 +18,7 @@ Este es un sitio web estático que funciona con:
 - JavaScript (Vanilla)
 - Three.js para renderizado 3D
 
-## Despliegue en GitHub Pages
+## 🌐 Despliegue en GitHub Pages
 
 ### Opción 1: Desde la interfaz web de GitHub
 
@@ -51,7 +51,7 @@ git push -u origin main
 
 Después sigue los pasos de la Opción 1 para habilitar GitHub Pages.
 
-## Estructura del Proyecto
+## 📁 Estructura del Proyecto
 
 ```
 TheFinder25/
@@ -72,7 +72,7 @@ TheFinder25/
 └── reset-passwords.js     # Utilidad para resetear contraseñas
 ```
 
-## Uso
+## 🎮 Uso
 
 Una vez desplegado, los usuarios pueden:
 - Ver el contador regresivo para el evento
@@ -80,7 +80,7 @@ Una vez desplegado, los usuarios pueden:
 - Acceder a libros personales (con contraseña si está protegido)
 - Agregar items a su libro personal
 
-## Desarrollo Local
+## 🔧 Desarrollo Local
 
 Para probar el sitio localmente:
 
@@ -88,11 +88,10 @@ Para probar el sitio localmente:
 2. Usa un servidor local como `Live Server` en VS Code, o
 3. Ejecuta `python -m http.server 8000` en la carpeta del proyecto
 
-## Licencia
+## 📝 Licencia
 
 Este proyecto es de código abierto y está disponible para uso personal.
 
-## Contribuciones
+## 👥 Contribuciones
 
 Las contribuciones son bienvenidas. Por favor, abre un issue o pull request para sugerencias o mejoras.
-

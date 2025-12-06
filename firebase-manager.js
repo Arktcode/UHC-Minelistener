@@ -9,6 +9,7 @@ const firebaseConfig = {
     measurementId: "G-22DSKDCSDT"
 };
 
+// Variables internas
 let db;
 const GlobalState = {
     skins: {},
@@ -16,30 +17,48 @@ const GlobalState = {
     passwords: {}
 };
 
+// Inicialización del sistema
 function initFirebaseSystem() {
     if (typeof firebase === 'undefined') {
-        console.error("❌ El SDK de Firebase no está cargado.");
+        console.error("El SDK de Firebase no está cargado.");
         alert("Falta cargar las librerías de Firebase en index.html");
         return;
     }
 
     try {
-
+        // Evitar reinicializar si ya existe
         if (!firebase.apps.length) {
             firebase.initializeApp(firebaseConfig);
         }
 
         db = firebase.database();
-        console.log("🔥 Base de Datos Global Conectada.");
+        console.log("Base de Datos Global Conectada.");
 
-
+        // Iniciar escuchas en tiempo real
         setupListeners();
+
+        // --- DIAGNÓSTICO DE CONEXIÓN ---
+        db.ref('.info/connected').on('value', function (snap) {
+            if (snap.val() === true) {
+                console.log("Conectado a Firebase.");
+
+                // Prueba de escritura para verificar reglas
+                db.ref('test_permission').set(Date.now()).then(function () {
+                    console.log("Permisos de escritura: CORRECTO.");
+                    db.ref('test_permission').remove();
+                }).catch(function (error) {
+                    console.error("ERROR DE PERMISOS: " + error.message);
+                    alert("⚠️ CONEXIÓN EXITOSA PERO BLOQUEADA\n\nLa base de datos conecta, pero no deja guardar datos.\n\nSOLUCIÓN:\n1. Ve a Firebase Console -> Realtime Database -> Reglas.\n2. Cambia '.write': false a '.write': true.\n3. Publicar.");
+                });
+            }
+        });
     } catch (e) {
         console.error("Error inicializando Firebase:", e);
         console.warn("Asegúrate de haber configurado las claves API en firebase-manager.js");
     }
 }
 
+// Escuchar cambios en tiempo real
 function setupListeners() {
     // 1. SKINS
     db.ref('skins').on('value', (snapshot) => {
@@ -48,12 +67,14 @@ function setupListeners() {
         refreshSkinUI();
     });
 
+    // 2. ITEMS (Inventarios de libros)
     db.ref('items').on('value', (snapshot) => {
         GlobalState.items = snapshot.val() || {};
         console.log('🔄 Items sincronizados desde la nube.');
         refreshItemsUI();
     });
 
+    // 3. PASSWORDS (Contraseñas de libros)
     db.ref('passwords').on('value', (snapshot) => {
         GlobalState.passwords = snapshot.val() || {};
         console.log('🔄 Contraseñas sincronizadas.');
@@ -62,23 +83,28 @@ function setupListeners() {
     });
 }
 
+// Callbacks de actualización de UI
 function refreshSkinUI() {
     if (typeof generatePlayerHeadsGrid === 'function') generatePlayerHeadsGrid();
     if (typeof initPayersGrid === 'function') initPayersGrid();
 
+    // Si el visor 3D está abierto, recargar skin
+    // Logica existente en player-viewer.js se apoya en getCustomSkin, que actualizaremos
     if (typeof currentViewedPlayerId !== 'undefined' && currentViewedPlayerId !== -1) {
         if (typeof openPlayerViewer === 'function') openPlayerViewer(currentViewedPlayerId);
     }
 }
 
 function refreshItemsUI() {
-
+    // Si hay un libro abierto, recargar sus items
+    // Necesitamos saber qué libro está abierto. Usaremos una variable global si existe, 
+    // o inferiremos del contexto global si existe 'currentPlayerIndex' en interactives.js
     if (typeof currentPlayerIndex !== 'undefined' && currentPlayerIndex >= 0) {
         if (typeof initBookItemsGrid === 'function') initBookItemsGrid(currentPlayerIndex);
     }
 }
 
-
+//SKINS
 window.getCustomSkin = function (playerId) {
 
     return GlobalState.skins[`player_${playerId}`] || null;
@@ -96,7 +122,7 @@ window.saveCustomSkinGlobal = function (playerId, skinData) {
     localStorage.setItem(`player_custom_skin_${playerId}`, skinData || '');
 };
 
-// --- ITEMS ---
+//ITEMS
 window.getGlobalItem = function (playerIndex, boxIndex) {
     const key = `p${playerIndex}_b${boxIndex}`;
     return GlobalState.items[key] || null;
@@ -112,7 +138,7 @@ window.saveGlobalItem = function (playerIndex, boxIndex, itemId) {
     }
 };
 
-// --- AUTH ---
+//AUTH
 window.bookAuthGlobal = {
     hasPassword: function (playerId) {
         return !!GlobalState.passwords[`pw_${playerId}`];
@@ -131,5 +157,3 @@ window.bookAuthGlobal = {
 };
 
 document.addEventListener('DOMContentLoaded', initFirebaseSystem);
-
-
