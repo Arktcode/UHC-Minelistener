@@ -1,0 +1,177 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UHC Mindustry 2025</title>
+
+    <!-- Fuente medio medio estilo Minecraft PRR kssjskjkks -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <!-- Capas de terreno -->
+    <!-- 1. Colinas invertidas superiores (Netherrack) -->
+    <div class="terrain-top-netherrack"></div>
+
+    <!-- 2. Línea inferior de Nylium (Plana) -->
+    <div class="terrain-bottom-line"></div>
+
+    <!-- Capas de terreno escalonado -->
+    <div class="terrain-basalt-pillars"></div>
+    <!-- Panel lateral izquierdo -->
+    <div class="sidebar" id="sidebar">
+
+        <div class="sidebar-content">
+            <h2>JUGADORES</h2>
+            <div id="payers-grid" class="payers-grid"></div>
+        </div>
+    </div>
+
+    <!-- Botones de toggle -->
+    <button class="toggle-btn" id="toggleBtn">
+        <img src="assets/webp/Emerald.webp" alt="Toggle">
+    </button>
+
+    <button class="book-toggle-btn" id="bookToggleBtn">
+        <img src="assets/items/Book_and_Quill.png" alt="Abrir Libro">
+    </button>
+
+    <!-- Contenido principal -->
+    <div class="content">
+        <div class="countdown-container">
+            <div class="countdown-item">
+                <span id="days" class="countdown-number">00</span>
+                <span class="countdown-label">DÍAS</span>
+            </div>
+            <div class="separator">:</div>
+            <div class="countdown-item">
+                <span id="hours" class="countdown-number">00</span>
+                <span class="countdown-label">HRS</span>
+            </div>
+            <div class="separator">:</div>
+            <div class="countdown-item">
+                <span id="minutes" class="countdown-number">00</span>
+                <span class="countdown-label">MIN</span>
+            </div>
+            <div class="separator">:</div>
+            <div class="countdown-item">
+                <span id="seconds" class="countdown-number">00</span>
+                <span class="countdown-label">SEG</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- SELECTOR DE JUGADORES -->
+    <div class="player-selector-overlay" id="player-selector-overlay">
+        <div class="player-selector-panel">
+            <button class="close-player-selector" id="close-player-selector">X</button>
+            <h3 class="player-selector-title">Seleccionar Jugador</h3>
+            <div class="player-heads-grid" id="player-heads-grid"></div>
+        </div>
+    </div>
+
+    <!-- VISOR DE JUGADORES -->
+    <div class="player-viewer-overlay" id="player-viewer-overlay">
+        <div class="player-viewer-panel">
+            <button class="close-player-viewer" id="close-player-viewer">X</button>
+
+            <div class="player-viewer-left">
+                <div class="player-skin-container">
+                    <canvas id="player-skin-canvas"></canvas>
+                </div>
+                <div class="player-name-display" id="player-name-display">Jugador</div>
+            </div>
+
+            <div class="player-viewer-right" id="player-info-content"></div>
+        </div>
+    </div>
+
+    <!-- PASSWORD PROMPT OVERLAY -->
+    <div class="password-prompt-overlay" id="password-prompt-overlay">
+        <div class="password-prompt-panel">
+            <h3>🔒 Libro Protegido</h3>
+            <p>Libro de: <span id="password-player-name">Jugador</span></p>
+            <input type="password" id="password-input" placeholder="Ingresa la contraseña" autocomplete="off">
+            <p class="password-error" id="password-error"></p>
+            <div class="password-prompt-buttons">
+                <button id="password-confirm-btn" class="password-btn confirm">Confirmar</button>
+                <button id="password-cancel-btn" class="password-btn cancel">Cancelar</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- BOOK OVERLAY -->
+    <div class="book-overlay" id="book-overlay">
+        <div class="book-panel" id="book-panel">
+            <button class="book-back-btn" id="book-back-btn" title="Volver al selector">&lt;</button>
+            <button class="book-close-btn" id="book-close-btn">X</button>
+            <button class="book-password-btn" id="book-password-btn" title="Configurar contraseña">🔒</button>
+
+            <h3 class="book-player-name" id="book-player-name">Jugador</h3>
+            <div class="book-pages">
+                <textarea class="book-left-page" id="book-left-text" placeholder="Página izquierda..."></textarea>
+                <div class="book-right-page">
+                    <div class="book-items-grid" id="book-items-container"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- PASSWORD SETTINGS PANEL -->
+    <div class="password-settings-panel" id="password-settings-panel">
+        <h3>🔐 Configurar Contraseña</h3>
+        <div id="current-password-group">
+            <label>Contraseña Actual:</label>
+            <input type="password" id="current-password-input" placeholder="Contraseña actual" autocomplete="off">
+        </div>
+        <div id="new-password-group">
+            <label>Nueva Contraseña:</label>
+            <input type="password" id="new-password-input" placeholder="Mínimo 4 caracteres" autocomplete="off">
+        </div>
+        <div id="confirm-password-group">
+            <label>Confirmar Contraseña:</label>
+            <input type="password" id="confirm-password-input" placeholder="Confirmar contraseña" autocomplete="off">
+        </div>
+        <p class="password-settings-error" id="password-settings-error"></p>
+        <p class="password-settings-success" id="password-settings-success"></p>
+        <div class="password-settings-buttons">
+            <button id="verify-current-password-btn" class="password-btn confirm">Verificar</button>
+            <button id="save-password-btn" class="password-btn confirm">Guardar</button>
+            <button id="remove-password-btn" class="password-btn remove">Quitar Contraseña</button>
+            <button id="close-password-settings-btn" class="password-btn cancel">Cerrar</button>
+        </div>
+    </div>
+
+    <!-- Overlay del Mapa de Selección -->
+    <div class="map-overlay" id="map-overlay">
+        <div class="map-panel">
+            <button class="close-map" id="close-map">X</button>
+            <h3 class="map-title">Seleccionar Item</h3>
+            <div class="map-items-grid" id="map-items-grid"></div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <!-- Three.js (REQUERIDO para renderizado 3D) -->
+    <script src="https://cdn.jsdelivr.net/npm/three@0.147.0/build/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.147.0/examples/js/controls/OrbitControls.js"></script>
+
+    <!-- Scripts del proyecto (consolidados) -->
+    <script src="players.js"></script>
+    <script src="interactives.js"></script>
+    <script src="book.js"></script>
+    <script src="book-auth.js"></script>
+
+
+    <!-- Renderizador personalizado de Minecraft -->
+    <script src="render/minecraft-skin-renderer.js"></script>
+    <script src="render/player-viewer.js"></script>
+</body>
+
+</html>
