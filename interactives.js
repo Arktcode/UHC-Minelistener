@@ -239,18 +239,28 @@ function updateBookBox(boxIndex, item) {
 }
 
 function saveItem(playerIndex, boxIndex, itemId) {
-    try {
-        if (itemId) {
-            localStorage.setItem(`player_item_${playerIndex}_${boxIndex}`, itemId);
-        } else {
-            localStorage.removeItem(`player_item_${playerIndex}_${boxIndex}`);
-        }
-    } catch (e) {
-        // Error silencioso
+    if (typeof window.saveGlobalItem === 'function') {
+        window.saveGlobalItem(playerIndex, boxIndex, itemId);
+    } else {
+        // Fallback local si Firebase no está listo
+        try {
+            if (itemId) {
+                localStorage.setItem(`player_item_${playerIndex}_${boxIndex}`, itemId);
+            } else {
+                localStorage.removeItem(`player_item_${playerIndex}_${boxIndex}`);
+            }
+        } catch (e) { }
     }
 }
 
 function loadItem(playerIndex, boxIndex) {
+    if (typeof window.getGlobalItem === 'function') {
+        // Intentar obtener global (prioridad)
+        const globalItem = window.getGlobalItem(playerIndex, boxIndex);
+        if (globalItem !== undefined) return globalItem; // Puede ser null
+    }
+
+    // Fallback lectura local
     try {
         return localStorage.getItem(`player_item_${playerIndex}_${boxIndex}`);
     } catch (e) {

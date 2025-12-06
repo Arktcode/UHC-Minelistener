@@ -178,7 +178,14 @@ function applySkin() {
     }
 
     try {
-        localStorage.setItem(`player_custom_skin_${currentSkinPlayerIndex}`, pendingSkinData);
+        // Guardado Global (si está disponible)
+        if (typeof window.saveCustomSkinGlobal === 'function') {
+            window.saveCustomSkinGlobal(currentSkinPlayerIndex, pendingSkinData);
+        } else {
+            // Fallback local
+            localStorage.setItem(`player_custom_skin_${currentSkinPlayerIndex}`, pendingSkinData);
+        }
+
         showSkinSuccess('✅ Skin guardada correctamente');
 
         setTimeout(() => {
@@ -195,7 +202,14 @@ function resetSkin() {
     if (currentSkinPlayerIndex < 0) return;
 
     try {
-        localStorage.removeItem(`player_custom_skin_${currentSkinPlayerIndex}`);
+        // Borrado Global
+        if (typeof window.saveCustomSkinGlobal === 'function') {
+            window.saveCustomSkinGlobal(currentSkinPlayerIndex, null);
+        } else {
+            // Fallback local
+            localStorage.removeItem(`player_custom_skin_${currentSkinPlayerIndex}`);
+        }
+
         showSkinSuccess('✅ Skin restaurada al original');
 
         setTimeout(() => {
@@ -216,19 +230,15 @@ function updatePlayerAvatarInSidebar(playerIndex) {
 
 function updatePlayerViewer3DModel(playerIndex) {
     if (typeof currentViewedPlayerId !== 'undefined' && currentViewedPlayerId === playerIndex) {
-
         let skinToLoad;
-
         if (typeof getPlayerData === 'function' && typeof getCustomSkin === 'function') {
             const playerData = getPlayerData(playerIndex);
             const customSkin = getCustomSkin(playerIndex);
-
             if (customSkin) {
                 skinToLoad = customSkin;
             } else {
                 skinToLoad = playerData ? playerData.skinFile : null;
             }
-
             if (skinToLoad && typeof initMinecraftSkinRenderer === 'function') {
                 initMinecraftSkinRenderer(skinToLoad);
             }
@@ -237,6 +247,13 @@ function updatePlayerViewer3DModel(playerIndex) {
 }
 
 function getCustomSkin(playerIndex) {
+    // Lectura Global (Prioridad)
+    if (typeof window.getGlobalSkin === 'function') { // Corregido nombre de función
+        const globalSkin = window.getGlobalSkin(playerIndex);
+        if (globalSkin !== undefined && globalSkin !== null) return globalSkin;
+    }
+
+    // Fallback local
     try {
         return localStorage.getItem(`player_custom_skin_${playerIndex}`);
     } catch (error) {

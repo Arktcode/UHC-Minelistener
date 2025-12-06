@@ -14,26 +14,55 @@ async function setPlayerPassword(playerIndex, password) {
     }
 
     const hashedPassword = await hashPassword(password);
-    localStorage.setItem(`book_password_${playerIndex}`, hashedPassword);
+
+    // Global
+    if (window.bookAuthGlobal) {
+        window.bookAuthGlobal.setPassword(playerIndex, hashedPassword);
+    } else {
+        localStorage.setItem(`book_password_${playerIndex}`, hashedPassword);
+    }
     return true;
 }
 
 function hasPassword(playerIndex) {
+    if (window.bookAuthGlobal) {
+        // Asumimos que si bookAuthGlobal existe, los datos ya deberían estar cargados o cargándose
+        // Si retorna false podría ser que no tiene password O que no ha cargado. 
+        // Pero dado que es caché local sincronizado, es lo mejor que tenemos instatáneamente.
+        return window.bookAuthGlobal.hasPassword(playerIndex);
+    }
     return localStorage.getItem(`book_password_${playerIndex}`) !== null;
 }
 
 async function validatePassword(playerIndex, password) {
+    const inputHash = await hashPassword(password);
+
+    if (window.bookAuthGlobal) {
+        // Verificar contra global si existe
+        if (window.bookAuthGlobal.hasPassword(playerIndex)) {
+            return window.bookAuthGlobal.validate(playerIndex, inputHash);
+        } else {
+            // Si global dice que no tiene password, es true (acceso libre)
+            // A menos que estemos offline y tengamos copia local...
+            // Por consistencia, si usamos global, confiamos en global.
+            return true;
+        }
+    }
+
     const storedHash = localStorage.getItem(`book_password_${playerIndex}`);
     if (!storedHash) {
         return true;
     }
 
-    const inputHash = await hashPassword(password);
     return inputHash === storedHash;
 }
 
 function removePassword(playerIndex) {
-    localStorage.removeItem(`book_password_${playerIndex}`);
+    if (window.bookAuthGlobal) {
+        window.bookAuthGlobal.removePassword(playerIndex);
+    } else {
+        localStorage.removeItem(`book_password_${playerIndex}`);
+    }
 }
 
 function showPasswordPrompt(playerIndex, playerName, onSuccess, onCancel) {
